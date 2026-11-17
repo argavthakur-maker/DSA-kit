@@ -59,6 +59,23 @@ DSAkit is actively being developed.
 
 The library will gradually expand to include additional data structures and algorithms while maintaining a consistent API and implementation quality.
 
+## Build and Test
+
+DSAkit uses CMake and CTest for its local build and test workflow.
+
+```bash
+# Configure the project
+cmake -S . -B build
+
+# Build the linked-list example and test executable
+cmake --build build --parallel
+
+# Run the test suite
+ctest --test-dir build --output-on-failure
+```
+
+The current test suite checks linked-list copy construction, copy assignment, independent node ownership, self-assignment, and empty-list error handling.
+
 ## License
 
 See the LICENSE file for details.
