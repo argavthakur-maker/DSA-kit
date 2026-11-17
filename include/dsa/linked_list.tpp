@@ -6,6 +6,56 @@ dsa::LinkedList<T>::LinkedList()
 
 
 template <typename T>
+dsa::LinkedList<T>::LinkedList(const LinkedList<T>& other)
+  : head_(nullptr), tail_(nullptr), size_(0)
+{
+    try
+    {
+        const Node* current = other.head_;
+        while (current != nullptr)
+        {
+            push_back(current->data);
+            current = current->next;
+        }
+    }
+    catch (...)
+    {
+        clear();
+        throw;
+    }
+}
+
+
+template <typename T>
+dsa::LinkedList<T>& dsa::LinkedList<T>::operator=(const LinkedList<T>& other)
+{
+    if (this != &other)
+    {
+        LinkedList<T> copy(other);
+        swap(copy);
+    }
+    return *this;
+}
+
+
+template <typename T>
+void dsa::LinkedList<T>::swap(LinkedList<T>& other) noexcept
+{
+    Node* head = head_;
+    head_ = other.head_;
+    other.head_ = head;
+
+    Node* tail = tail_;
+    tail_ = other.tail_;
+    other.tail_ = tail;
+
+    std::size_t size = size_;
+    size_ = other.size_;
+    other.size_ = size;
+}
+
+
+template <typename T>
 dsa::LinkedList<T>::~LinkedList()
 {
     Node* current = head_;
