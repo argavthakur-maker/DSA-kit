@@ -2,6 +2,8 @@
 #define DSA_LINKED_LIST_H
 
 #include <cstddef>
+#include <iostream>
+#include <stdexcept>
 
 namespace dsa
 {
@@ -28,6 +30,11 @@ class LinkedList
 
     // Constructor
     LinkedList();
+
+    // Copying
+    LinkedList(const LinkedList& other);
+    LinkedList& operator=(const LinkedList& other);
+    void swap(LinkedList& other) noexcept;
 
     // Destructor
     ~LinkedList();
